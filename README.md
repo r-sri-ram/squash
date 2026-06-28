@@ -4,7 +4,11 @@
 
 Paste a Slack rant, a support note, or a voice-note transcript, or record your screen reproducing the bug. Squash returns one filed-ready ticket: steps to reproduce, expected vs actual, environment, severity, confidence, and the details still missing before a developer can start.
 
-![Squash turning a messy Slack message into a structured bug ticket](docs/squash-ticket.png)
+![Squash turning a messy Slack message into a structured bug ticket](docs/squash-demo.gif)
+
+## Demo
+
+Watch the full walkthrough, including the paste flow and screen-recording to ticket, in the launch thread: [x.com/WoCStreet/status/2070126819601440788](https://x.com/WoCStreet/status/2070126819601440788)
 
 ## The problem
 
