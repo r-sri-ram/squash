@@ -41,7 +41,7 @@ The whole pipeline stays inside Next.js and Convex, with no separate media worke
 - **Motion** for the staggered reveals and the processing animation
 - **Tailwind CSS** with a custom light and dark theme
 
-![Squash in light mode](docs/squash-light.png)
+![Squash in light mode](docs/squash-light-mode.png)
 
 ## Run it locally
 
