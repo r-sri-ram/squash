@@ -1,26 +1,97 @@
 @import "tailwindcss";
 
+/* ── Dark (default) ── */
 :root {
-  --background: #ffffff;
-  --foreground: #171717;
+  --bg: #0a0a09;
+  --surface: rgba(19, 19, 15, 0.7);
+  --surface-2: rgba(0, 0, 0, 0.4);
+  --line: rgba(255, 255, 255, 0.08);
+  --ink: #f5f4f0;
+  --muted: #a1a1aa;
+  --faint: #8a8a82;
+  --accent: #c9f24d;
+  --accent-strong: #c9f24d;
+  --accent-ink: #0a0a09;
+  --grain-opacity: 0.035;
+  --wash-1: rgba(201, 242, 77, 0.08);
+  --wash-2: rgba(120, 113, 80, 0.1);
+}
+
+/* ── Light ── */
+html.light {
+  --bg: #f6f6f1;
+  --surface: rgba(255, 255, 255, 0.85);
+  --surface-2: #efefe8;
+  --line: rgba(20, 20, 15, 0.1);
+  --ink: #1a1a16;
+  --muted: #57574f;
+  --faint: #7a7a70;
+  --accent: #bdee3c;
+  --accent-strong: #3f6212;
+  --accent-ink: #1a1a16;
+  --grain-opacity: 0.025;
+  --wash-1: rgba(132, 204, 22, 0.12);
+  --wash-2: rgba(180, 170, 130, 0.16);
 }
 
 @theme inline {
-  --color-background: var(--background);
-  --color-foreground: var(--foreground);
-  --font-sans: var(--font-geist-sans);
-  --font-mono: var(--font-geist-mono);
+  --color-bg: var(--bg);
+  --color-surface: var(--surface);
+  --color-surface-2: var(--surface-2);
+  --color-line: var(--line);
+  --color-ink: var(--ink);
+  --color-muted: var(--muted);
+  --color-faint: var(--faint);
+  --color-accent: var(--accent);
+  --color-accent-strong: var(--accent-strong);
+  --color-accent-ink: var(--accent-ink);
+  --font-sans: var(--font-sans);
+  --font-display: var(--font-display);
+  --font-mono: var(--font-mono);
 }
 
-@media (prefers-color-scheme: dark) {
-  :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
-  }
+html {
+  background: var(--bg);
 }
 
 body {
-  background: var(--background);
-  color: var(--foreground);
-  font-family: Arial, Helvetica, sans-serif;
+  color: var(--ink);
+  font-family: var(--font-sans), system-ui, sans-serif;
+  background-color: var(--bg);
+  background-image:
+    radial-gradient(120% 80% at 50% -10%, var(--wash-1) 0%, transparent 55%),
+    radial-gradient(90% 60% at 85% 110%, var(--wash-2) 0%, transparent 60%);
+  background-attachment: fixed;
+  transition:
+    background-color 0.4s ease,
+    color 0.4s ease;
+}
+
+/* film grain overlay */
+body::before {
+  content: "";
+  position: fixed;
+  inset: 0;
+  z-index: 9999;
+  pointer-events: none;
+  opacity: var(--grain-opacity);
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='120' height='120'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='3'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
+}
+
+::selection {
+  background: var(--accent);
+  color: var(--accent-ink);
+}
+
+::-webkit-scrollbar {
+  width: 10px;
+  height: 10px;
+}
+::-webkit-scrollbar-track {
+  background: transparent;
+}
+::-webkit-scrollbar-thumb {
+  background: var(--line);
+  border-radius: 999px;
+  border: 2px solid var(--bg);
 }
